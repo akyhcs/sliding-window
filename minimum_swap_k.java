@@ -42,3 +42,41 @@ class Array {
 		}
 	}
 }
+// } Driver Code Ends
+
+
+//User function Template for Java
+
+
+
+class Complete{
+    
+   
+    // Function for finding maximum and value pair
+    public static int minSwap (int a[], int n, int k) {
+        int window = 0;
+        int countTotalNumGreaterThanKWindow = 0;
+        for(int  i = 0 ;i<n;i++)
+        {
+            if(a[i]<=k) window = window + 1;
+        }
+        
+        for(int  i =0 ;i<window;i++)
+        {
+            if(a[i]>k) countTotalNumGreaterThanKWindow = countTotalNumGreaterThanKWindow+1;
+        }
+        int minSwapCount = countTotalNumGreaterThanKWindow ;
+        for(int i=0,j=window;j<n;i++,j++)
+        {
+            if(a[i]>k) 
+                countTotalNumGreaterThanKWindow = countTotalNumGreaterThanKWindow-1;
+            
+            if(a[j]>k)
+                countTotalNumGreaterThanKWindow = countTotalNumGreaterThanKWindow+1;
+            minSwapCount = minSwapCount < countTotalNumGreaterThanKWindow ? minSwapCount : countTotalNumGreaterThanKWindow;
+        }
+        return minSwapCount;
+    }
+    
+    
+}
